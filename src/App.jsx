@@ -50,20 +50,23 @@ function App() {
 
       <div className="content" id="about" style={{ display: currentTab === 'about' ? 'block' : 'none' }}>
           <h1>About me</h1>
-          <p>嗨！我是臺大的學生，目前就讀電機資安所碩一。</p>
-          <p>這是我期中專案 R12921A14 的網頁。</p>
+          <p>嗨！我是臺大的學生。</p>
+          <p>目前就讀電機資安所碩一。</p>
+          <p>這是我期中專案R12921A14的網頁。</p>
           <p>有任何問題請去留言板留言。</p>
       </div>
 
       <div className="content" id="messages" style={{ display: currentTab === 'messages' ? 'block' : 'none' }}>
         <h1>留言板</h1>
         <form onSubmit={handleSubmit}>
-          <input
+          <div>
+            <input
             type="text"
             value={message}
             onChange={handleMessageChange}
             placeholder="Enter your message here..."
-          />
+            />
+          </div>
           <button type="submit">Post Message</button>
         </form>
         <ul>

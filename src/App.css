@@ -91,3 +91,25 @@
 .message-text {
   margin: 5px 0;
 }
+
+input {
+  width: 100%; /* 讓 input 寬度滿版 */
+  padding: 10px; /* 增加內距讓文字不會貼邊 */
+  margin: 10px 0; /* 加點間距 */
+  box-sizing: border-box; /* 避免 padding 影響最終寬度 */
+  border: 1px solid #ccc; /* 預設邊框 */
+  border-radius: 4px; /* 輕微圓角 */
+  font-size: 16px; /* 字體大小 */
+  color: #f1e4e4; /* 字體顏色 */
+}
+
+input:focus {
+  border-color: #666; /* 當聚焦時邊框顏色加深 */
+  outline: none; /* 移除聚焦時的預設藍色輪廓 */
+}
+
+/* 如果你的 input 是在某個 class 名稱為 .input-container 的 div 內 */
+.input-container {
+  max-width: 600px; /* 限制最大寬度 */
+  margin: auto; /* 水平置中 */
+}
