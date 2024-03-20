@@ -1,20 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentTab, setCurrentTab] = useState('home');
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // 阻止表單默認提交行為
+    if (!message.trim()) return; // 防止提交空訊息
+    setMessages([...messages, message]); // 添加新訊息到訊息列表
+    setMessage(''); // 清空輸入欄位
+  };
+
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      setCurrentTab(hash || 'home');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   return (
     <>
-      <div class="container">
-        <h1>About Us</h1>
-        <p>這是一個簡易的靜態網頁，用於展示基本的HTML結構。</p>
-        <p>我們專注於提供高質量的網頁設計和開發服務，以滿足您的所有需求。</p>
+      <div className="navbar">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#messages">Messages</a>
+      </div>
+
+      <div className="content" id="home" style={{ display: currentTab === 'home' ? 'block' : 'none' }}>
+          <h1>歡迎頁面</h1>
+          <p>歡迎來到R12921A14的首頁</p>
+      </div>
+
+      <div className="content" id="about" style={{ display: currentTab === 'about' ? 'block' : 'none' }}>
+          <h1>關於我們</h1>
+          <p>嗨！我是臺大的學生，目前就讀電機資安所碩一。</p>
+          <p>這是我的期中專案</p>
+          <p>One Peice 什麼時候出第二季！</p>
+      </div>
+
+      <div className="content" id="messages" style={{ display: currentTab === 'messages' ? 'block' : 'none' }}>
+        <h1>留言板</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={message}
+            onChange={handleMessageChange}
+            placeholder="Enter your message here..."
+          />
+          <button type="submit">Post Message</button>
+        </form>
+        <ul>
+          {messages.map((msg, index) => (
+            <li key={index}>{msg}</li>
+          ))}
+        </ul>
       </div>
     </>
   )
 }
 
-export default App
+export default App;
