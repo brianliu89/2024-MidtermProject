@@ -49,10 +49,10 @@ function App() {
       </div>
 
       <div className="content" id="about" style={{ display: currentTab === 'about' ? 'block' : 'none' }}>
-          <h1>關於我們</h1>
+          <h1>About me</h1>
           <p>嗨！我是臺大的學生，目前就讀電機資安所碩一。</p>
-          <p>這是我的期中專案</p>
-          <p>One Peice 什麼時候出第二季！</p>
+          <p>這是我期中專案 R12921A14 的網頁。</p>
+          <p>有任何問題請去留言板留言。</p>
       </div>
 
       <div className="content" id="messages" style={{ display: currentTab === 'messages' ? 'block' : 'none' }}>

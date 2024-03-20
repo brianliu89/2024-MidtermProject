@@ -41,9 +41,8 @@
   color: #888;
 }
 
-/* 導航條樣式 */
 .navbar {
-  display: flex;
+  display: block;
   justify-content: start;
   background-color: #333;
   padding: 10px;
